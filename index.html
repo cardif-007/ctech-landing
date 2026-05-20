@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>C-TECH – Automatización Ágil que Impulsa tu Rentabilidad</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark:    '#111827',
+              blue:    '#2563EB',
+              blueHov: '#1D4ED8',
+              light:   '#F7FAF7',
+              muted:   '#6B7280',
+              border:  '#E5E7EB',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          boxShadow: {
+            card: '0 2px 16px 0 rgba(17,24,39,0.07)',
+            cardHov: '0 8px 32px 0 rgba(37,99,235,0.13)',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; }
+
+    /* Gradient mesh subtle background */
+    .hero-bg {
+      background: linear-gradient(135deg, #f0f4ff 0%, #ffffff 60%, #f7faf7 100%);
+    }
+
+    /* QR pattern */
+    .qr-cell { width: 8px; height: 8px; border-radius: 1px; }
+
+    /* Fade-in animation */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fadeUp { animation: fadeUp 0.65s ease both; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.34s; }
+    .delay-4 { animation-delay: 0.46s; }
+
+    /* Smooth card hover */
+    .solution-card { transition: box-shadow 0.25s ease, transform 0.25s ease; }
+    .solution-card:hover { box-shadow: 0 8px 32px 0 rgba(37,99,235,0.13); transform: translateY(-4px); }
+
+    /* CTA button */
+    .btn-primary {
+      background-color: #2563EB;
+      transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+    .btn-primary:hover {
+      background-color: #1D4ED8;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.35);
+    }
+    .btn-primary:active { transform: translateY(0); }
+
+    /* Differentiator item */
+    .diff-item { transition: background 0.2s ease; }
+    .diff-item:hover { background: #EFF6FF; }
+  </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║         NAVIGATION           ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-brand-border">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-brand-blue flex items-center justify-center">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="2" y="2" width="6" height="6" rx="1.5" fill="white"/>
+            <rect x="10" y="2" width="6" height="6" rx="1.5" fill="white" opacity="0.7"/>
+            <rect x="2" y="10" width="6" height="6" rx="1.5" fill="white" opacity="0.7"/>
+            <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" opacity="0.4"/>
+          </svg>
+        </div>
+        <span class="text-xl font-bold tracking-tight text-brand-dark">C-TECH</span>
+      </div>
+
+      <!-- Nav links (desktop) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-muted">
+        <a href="#soluciones" class="hover:text-brand-dark transition-colors">Soluciones</a>
+        <a href="#diferenciadores" class="hover:text-brand-dark transition-colors">Por qué C-TECH</a>
+        <a href="#contacto" class="hover:text-brand-dark transition-colors">Contacto</a>
+      </nav>
+
+      <!-- CTA nav -->
+      <a href="#contacto"
+         class="btn-primary hidden md:inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-lg">
+        Contáctanos
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button id="menuBtn" class="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors" aria-label="Menú">
+        <svg width="22" height="22" fill="none" stroke="#111827" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6"  x2="19" y2="6"/>
+          <line x1="3" y1="11" x2="19" y2="11"/>
+          <line x1="3" y1="16" x2="19" y2="16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 border-t border-brand-border bg-white">
+      <nav class="flex flex-col gap-3 pt-4 text-sm font-medium text-brand-muted">
+        <a href="#soluciones"      class="hover:text-brand-dark transition-colors py-1">Soluciones</a>
+        <a href="#diferenciadores" class="hover:text-brand-dark transition-colors py-1">Por qué C-TECH</a>
+        <a href="#contacto"        class="hover:text-brand-dark transition-colors py-1">Contacto</a>
+        <a href="#contacto"
+           class="btn-primary text-center text-white text-sm font-semibold px-5 py-2.5 rounded-lg mt-2">
+          Contáctanos
+        </a>
+      </nav>
+    </div>
+  </header>
+
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║           HERO               ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="hero-bg pt-32 pb-24 px-6 overflow-hidden">
+    <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+
+      <!-- Left: copy -->
+      <div class="flex-1 max-w-xl animate-fadeUp">
+        <!-- Badge -->
+        <span class="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-blue bg-blue-50 border border-blue-100 rounded-full px-3 py-1 mb-6">
+          <span class="w-1.5 h-1.5 rounded-full bg-brand-blue inline-block"></span>
+          Software de Gestión Empresarial
+        </span>
+
+        <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight text-brand-dark mb-6">
+          Automatización Ágil<br/>
+          que Impulsa tu<br/>
+          <span class="text-brand-blue">Rentabilidad</span>
+        </h1>
+
+        <p class="text-lg text-brand-muted leading-relaxed mb-8">
+          Gestiona tu negocio desde cualquier dispositivo, toma decisiones en tiempo real y
+          despliega en menos de 7 días. C-TECH pone el control total en la palma de tu mano.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="#contacto"
+             class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-7 py-3.5 rounded-xl text-base">
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16l-.08.92z"/>
+            </svg>
+            Contáctanos ahora
+          </a>
+          <a href="#soluciones"
+             class="inline-flex items-center justify-center gap-2 text-brand-dark font-semibold px-7 py-3.5 rounded-xl text-base border border-brand-border hover:bg-gray-50 transition-colors">
+            Ver Soluciones
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+
+        <!-- Social proof mini row -->
+        <div class="flex items-center gap-6 mt-10 pt-8 border-t border-brand-border">
+          <div>
+            <p class="text-2xl font-bold text-brand-dark">7 días</p>
+            <p class="text-xs text-brand-muted mt-0.5">Despliegue garantizado</p>
+          </div>
+          <div class="w-px h-10 bg-brand-border"></div>
+          <div>
+            <p class="text-2xl font-bold text-brand-dark">3</p>
+            <p class="text-xs text-brand-muted mt-0.5">Módulos especializados</p>
+          </div>
+          <div class="w-px h-10 bg-brand-border"></div>
+          <div>
+            <p class="text-2xl font-bold text-brand-dark">100%</p>
+            <p class="text-xs text-brand-muted mt-0.5">Control en la nube</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: dashboard mockup -->
+      <div class="flex-1 w-full max-w-lg animate-fadeUp delay-2">
+        <div class="bg-white rounded-2xl shadow-card border border-brand-border p-5 relative">
+
+          <!-- Window chrome -->
+          <div class="flex items-center gap-2 mb-5">
+            <span class="w-3 h-3 rounded-full bg-red-400"></span>
+            <span class="w-3 h-3 rounded-full bg-yellow-400"></span>
+            <span class="w-3 h-3 rounded-full bg-green-400"></span>
+            <div class="flex-1 h-6 bg-gray-50 rounded-md border border-brand-border ml-3 flex items-center px-3">
+              <span class="text-xs text-brand-muted font-mono">app.ctech.mx/dashboard</span>
+            </div>
+          </div>
+
+          <!-- Dashboard header -->
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <p class="text-xs text-brand-muted">Buenos días, Administrador</p>
+              <p class="font-bold text-brand-dark text-sm">Panel de Control</p>
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs text-green-600 bg-green-50 border border-green-100 rounded-full px-2.5 py-1 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block"></span>
+              Sistema activo
+            </span>
+          </div>
+
+          <!-- KPI cards row -->
+          <div class="grid grid-cols-3 gap-3 mb-5">
+            <div class="bg-brand-light rounded-xl p-3 border border-brand-border">
+              <p class="text-xs text-brand-muted mb-1">Ventas hoy</p>
+              <p class="text-lg font-bold text-brand-dark">$24,830</p>
+              <p class="text-xs text-green-600 font-medium mt-0.5">↑ 12.4%</p>
+            </div>
+            <div class="bg-blue-50 rounded-xl p-3 border border-blue-100">
+              <p class="text-xs text-brand-muted mb-1">Accesos QR</p>
+              <p class="text-lg font-bold text-brand-blue">148</p>
+              <p class="text-xs text-brand-muted font-medium mt-0.5">hoy</p>
+            </div>
+            <div class="bg-brand-light rounded-xl p-3 border border-brand-border">
+              <p class="text-xs text-brand-muted mb-1">Stock bajo</p>
+              <p class="text-lg font-bold text-orange-500">3</p>
+              <p class="text-xs text-orange-400 font-medium mt-0.5">alertas</p>
+            </div>
+          </div>
+
+          <!-- Mini bar chart -->
+          <div class="mb-5">
+            <div class="flex items-center justify-between mb-2.5">
+              <p class="text-xs font-semibold text-brand-dark">Ventas – últimos 7 días</p>
+              <p class="text-xs text-brand-muted">Mayo 2026</p>
+            </div>
+            <div class="flex items-end gap-1.5 h-16">
+              <div class="flex-1 bg-blue-100 rounded-sm" style="height:40%"></div>
+              <div class="flex-1 bg-blue-200 rounded-sm" style="height:60%"></div>
+              <div class="flex-1 bg-blue-300 rounded-sm" style="height:50%"></div>
+              <div class="flex-1 bg-brand-blue rounded-sm" style="height:80%"></div>
+              <div class="flex-1 bg-blue-300 rounded-sm" style="height:65%"></div>
+              <div class="flex-1 bg-blue-200 rounded-sm" style="height:70%"></div>
+              <div class="flex-1 bg-brand-blue rounded-sm" style="height:100%"></div>
+            </div>
+            <div class="flex gap-1.5 mt-1">
+              <p class="flex-1 text-center text-xs text-brand-muted">L</p>
+              <p class="flex-1 text-center text-xs text-brand-muted">M</p>
+              <p class="flex-1 text-center text-xs text-brand-muted">M</p>
+              <p class="flex-1 text-center text-xs text-brand-muted">J</p>
+              <p class="flex-1 text-center text-xs text-brand-muted">V</p>
+              <p class="flex-1 text-center text-xs text-brand-muted">S</p>
+              <p class="flex-1 text-center text-xs text-brand-muted">D</p>
+            </div>
+          </div>
+
+          <!-- QR + recent activity row -->
+          <div class="flex gap-3">
+            <!-- QR code SVG -->
+            <div class="bg-white border border-brand-border rounded-xl p-3 flex flex-col items-center justify-center gap-2 min-w-[88px]">
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Top-left finder -->
+                <rect x="4"  y="4"  width="20" height="20" rx="2" fill="#111827"/>
+                <rect x="7"  y="7"  width="14" height="14" rx="1" fill="white"/>
+                <rect x="10" y="10" width="8"  height="8"  rx="0.5" fill="#111827"/>
+                <!-- Top-right finder -->
+                <rect x="36" y="4"  width="20" height="20" rx="2" fill="#111827"/>
+                <rect x="39" y="7"  width="14" height="14" rx="1" fill="white"/>
+                <rect x="42" y="10" width="8"  height="8"  rx="0.5" fill="#111827"/>
+                <!-- Bottom-left finder -->
+                <rect x="4"  y="36" width="20" height="20" rx="2" fill="#111827"/>
+                <rect x="7"  y="39" width="14" height="14" rx="1" fill="white"/>
+                <rect x="10" y="42" width="8"  height="8"  rx="0.5" fill="#111827"/>
+                <!-- Data modules -->
+                <rect x="28" y="4"  width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="4"  y="28" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="28" y="28" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="34" y="28" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="40" y="28" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="46" y="28" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="52" y="28" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="28" y="34" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="34" y="34" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="46" y="34" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="52" y="34" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="28" y="40" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="40" y="40" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="52" y="40" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="28" y="46" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="34" y="46" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="46" y="46" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="28" y="52" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="40" y="52" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="52" y="52" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="10" y="28" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="16" y="28" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="10" y="34" width="4" height="4" rx="0.5" fill="#2563EB"/>
+                <rect x="16" y="34" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="10" y="52" width="4" height="4" rx="0.5" fill="#111827"/>
+                <rect x="16" y="52" width="4" height="4" rx="0.5" fill="#2563EB"/>
+              </svg>
+              <p class="text-xs text-brand-muted font-medium">Acceso QR</p>
+            </div>
+
+            <!-- Recent activity -->
+            <div class="flex-1 bg-brand-light rounded-xl p-3 border border-brand-border">
+              <p class="text-xs font-semibold text-brand-dark mb-2">Actividad reciente</p>
+              <div class="flex flex-col gap-2">
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
+                  <p class="text-xs text-brand-muted truncate">Venta #0891 – $1,240</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-brand-blue flex-shrink-0"></span>
+                  <p class="text-xs text-brand-muted truncate">Acceso QR – Puerta Norte</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-orange-400 flex-shrink-0"></span>
+                  <p class="text-xs text-brand-muted truncate">Stock bajo: Tornillo M8</p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0"></span>
+                  <p class="text-xs text-brand-muted truncate">Membresía #A042 renovada</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║           VIDEO              ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="text-center mb-12">
+        <span class="inline-block text-xs font-semibold text-brand-blue bg-blue-50 border border-blue-100 rounded-full px-3 py-1 mb-4">
+          C-TECH en acción
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mb-4">
+          Míralo funcionar
+        </h2>
+        <p class="text-brand-muted text-lg max-w-xl mx-auto">
+          Un vistazo rápido a lo que C-TECH puede hacer por tu negocio.
+        </p>
+      </div>
+
+      <!-- Video embed — YouTube Shorts (vertical 9:16) centered -->
+      <div class="flex justify-center">
+        <div class="relative w-full max-w-xs rounded-2xl overflow-hidden shadow-card border border-brand-border bg-black"
+             style="aspect-ratio: 9/16;">
+          <iframe
+            src="https://www.youtube.com/embed/cmjPFeQFtD4?rel=0&modestbranding=1"
+            title="C-TECH en acción"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+            class="absolute inset-0 w-full h-full">
+          </iframe>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║        SOLUCIONES            ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section id="soluciones" class="py-24 px-6 bg-white">
+    <div class="max-w-6xl mx-auto">
+
+      <!-- Section header -->
+      <div class="text-center mb-16">
+        <span class="inline-block text-xs font-semibold text-brand-blue bg-blue-50 border border-blue-100 rounded-full px-3 py-1 mb-4">
+          Nuestras Soluciones
+        </span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mb-4">
+          Un ecosistema diseñado<br/>para tu industria
+        </h2>
+        <p class="text-brand-muted text-lg max-w-xl mx-auto">
+          Cada módulo resuelve el caos operativo específico de tu sector, sin funciones innecesarias.
+        </p>
+      </div>
+
+      <!-- Cards grid -->
+      <div class="grid md:grid-cols-3 gap-6">
+
+        <!-- Card 1: Inventario & POS -->
+        <div class="solution-card bg-white rounded-2xl border border-brand-border shadow-card p-7 flex flex-col">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center mb-5">
+            <svg width="24" height="24" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 7h11"/>
+              <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            </svg>
+          </div>
+          <!-- Badge -->
+          <span class="inline-block text-xs font-semibold text-brand-blue bg-blue-50 rounded-full px-2.5 py-0.5 mb-3 w-fit">
+            Inventario & POS
+          </span>
+          <h3 class="text-lg font-bold text-brand-dark mb-3">
+            C-TECH Inventario & POS Pro
+          </h3>
+          <p class="text-brand-muted text-sm leading-relaxed mb-5 flex-1">
+            Control de stock en tiempo real para ferreterías y refaccionarias. Búsqueda
+            de producto en menos de <strong class="text-brand-dark">1 segundo</strong>, gestión de proveedores,
+            cortes de caja y reportes de rentabilidad desde el celular.
+          </p>
+          <ul class="flex flex-col gap-2.5 mt-auto">
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Búsqueda por código, nombre o clave
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Alertas de stock mínimo automáticas
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#2563EB" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Reportes de ventas en tiempo real
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 2: Accesos QR -->
+        <div class="solution-card bg-white rounded-2xl border border-brand-border shadow-card p-7 flex flex-col relative overflow-hidden">
+          <!-- Highlight top bar -->
+          <div class="absolute top-0 left-0 right-0 h-1 bg-brand-blue rounded-t-2xl"></div>
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-5">
+            <svg width="24" height="24" fill="none" stroke="#4F46E5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <!-- Badge -->
+          <span class="inline-block text-xs font-semibold text-indigo-600 bg-indigo-50 rounded-full px-2.5 py-0.5 mb-3 w-fit">
+            Control de Accesos
+          </span>
+          <h3 class="text-lg font-bold text-brand-dark mb-3">
+            C-TECH Accesos
+          </h3>
+          <p class="text-brand-muted text-sm leading-relaxed mb-5 flex-1">
+            Seguridad inteligente basada en <strong class="text-brand-dark">códigos QR</strong> para fraccionamientos,
+            edificios y condominios. Registro de visitas, historial de accesos y gestión de
+            residentes desde un panel central.
+          </p>
+          <ul class="flex flex-col gap-2.5 mt-auto">
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              QR dinámico por residente o visita
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Historial completo por puerta o zona
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#4F46E5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Control remoto vía celular 24/7
+            </li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Memberships -->
+        <div class="solution-card bg-white rounded-2xl border border-brand-border shadow-card p-7 flex flex-col">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-emerald-50 border border-emerald-100 flex items-center justify-center mb-5">
+            <svg width="24" height="24" fill="none" stroke="#059669" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <!-- Badge -->
+          <span class="inline-block text-xs font-semibold text-emerald-600 bg-emerald-50 rounded-full px-2.5 py-0.5 mb-3 w-fit">
+            Membresías
+          </span>
+          <h3 class="text-lg font-bold text-brand-dark mb-3">
+            C-TECH Memberships
+          </h3>
+          <p class="text-brand-muted text-sm leading-relaxed mb-5 flex-1">
+            Gestión digital de membresías con <strong class="text-brand-dark">código QR</strong> para gimnasios,
+            clubes deportivos y espacios de coworking. Controla ingresos, vencimientos y
+            cobros automáticos sin papel.
+          </p>
+          <ul class="flex flex-col gap-2.5 mt-auto">
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              QR único e intransferible por miembro
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Alertas de vencimiento automáticas
+            </li>
+            <li class="flex items-center gap-2.5 text-sm text-brand-muted">
+              <svg class="flex-shrink-0" width="16" height="16" fill="none" stroke="#059669" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              Dashboard de afluencia y cobranza
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║      DIFERENCIADORES         ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section id="diferenciadores" class="py-24 px-6 bg-brand-light">
+    <div class="max-w-6xl mx-auto">
+
+      <div class="flex flex-col lg:flex-row gap-16 items-center">
+
+        <!-- Left: copy -->
+        <div class="flex-1 max-w-lg">
+          <span class="inline-block text-xs font-semibold text-brand-blue bg-blue-50 border border-blue-100 rounded-full px-3 py-1 mb-4">
+            Por qué C-TECH
+          </span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-dark mb-6">
+            Sin complejidades.<br/>Sin demoras.<br/>
+            <span class="text-brand-blue">Solo resultados.</span>
+          </h2>
+          <p class="text-brand-muted text-lg leading-relaxed">
+            Diseñado para negocios en crecimiento que necesitan tecnología real,
+            sin el precio ni el tiempo de implementación de un ERP tradicional.
+          </p>
+        </div>
+
+        <!-- Right: differentiator list -->
+        <div class="flex-1 w-full flex flex-col gap-3">
+
+          <div class="diff-item flex items-start gap-5 bg-white rounded-2xl border border-brand-border p-5 shadow-card cursor-default">
+            <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+              <svg width="22" height="22" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-dark mb-1">Despliegue en menos de 7 días</h4>
+              <p class="text-sm text-brand-muted leading-relaxed">
+                Sin largos proyectos de implementación. Tu sistema operativo y funcionando en una semana, con capacitación incluida.
+              </p>
+            </div>
+          </div>
+
+          <div class="diff-item flex items-start gap-5 bg-white rounded-2xl border border-brand-border p-5 shadow-card cursor-default">
+            <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+              <svg width="22" height="22" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-dark mb-1">Control total desde tu celular</h4>
+              <p class="text-sm text-brand-muted leading-relaxed">
+                Monitorea ventas, accesos y membresías en tiempo real desde cualquier dispositivo, en cualquier lugar del mundo.
+              </p>
+            </div>
+          </div>
+
+          <div class="diff-item flex items-start gap-5 bg-white rounded-2xl border border-brand-border p-5 shadow-card cursor-default">
+            <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+              <svg width="22" height="22" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-dark mb-1">Foco en tu rentabilidad</h4>
+              <p class="text-sm text-brand-muted leading-relaxed">
+                Cada reporte y cada alerta está diseñado para que tomes decisiones que aumenten tu margen, no para llenar pantallas.
+              </p>
+            </div>
+          </div>
+
+          <div class="diff-item flex items-start gap-5 bg-white rounded-2xl border border-brand-border p-5 shadow-card cursor-default">
+            <div class="w-11 h-11 rounded-xl bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+              <svg width="22" height="22" fill="none" stroke="#2563EB" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <div>
+              <h4 class="font-bold text-brand-dark mb-1">Infraestructura en la nube segura</h4>
+              <p class="text-sm text-brand-muted leading-relaxed">
+                Tus datos siempre respaldados, con acceso 24/7 y actualizaciones automáticas sin costo adicional.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║          CTA FINAL           ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section id="contacto" class="py-24 px-6 bg-brand-dark">
+    <div class="max-w-3xl mx-auto text-center">
+
+      <span class="inline-block text-xs font-semibold text-blue-300 bg-blue-900/40 border border-blue-700/40 rounded-full px-3 py-1 mb-6">
+        Empieza hoy mismo
+      </span>
+
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6">
+        ¿Listo para transformar el caos de tu negocio en
+        <span class="text-brand-blue"> control total</span>?
+      </h2>
+
+      <p class="text-lg text-gray-400 leading-relaxed mb-10 max-w-xl mx-auto">
+        Comunícate con nosotros por el canal que prefieras y descubre cómo C-TECH
+        puede estar funcionando en tu operación esta misma semana.
+      </p>
+
+      <!-- Contact cards -->
+      <div class="grid sm:grid-cols-3 gap-4 max-w-2xl mx-auto mb-12">
+
+        <!-- Llamada -->
+        <a href="tel:2213302926"
+           class="flex flex-col items-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group">
+          <div class="w-11 h-11 rounded-xl bg-brand-blue/20 border border-brand-blue/30 flex items-center justify-center group-hover:bg-brand-blue/30 transition-colors">
+            <svg width="20" height="20" fill="none" stroke="#60A5FA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16l-.08.92z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">Llamada</p>
+            <p class="text-white font-semibold text-sm">221 330 2926</p>
+          </div>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/522213484518" target="_blank" rel="noopener"
+           class="flex flex-col items-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group">
+          <div class="w-11 h-11 rounded-xl bg-green-500/20 border border-green-500/30 flex items-center justify-center group-hover:bg-green-500/30 transition-colors">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#4ADE80">
+              <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">WhatsApp</p>
+            <p class="text-white font-semibold text-sm">221 348 4518</p>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a href="mailto:cardif.tech@gmail.com"
+           class="flex flex-col items-center gap-3 bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all group">
+          <div class="w-11 h-11 rounded-xl bg-purple-500/20 border border-purple-500/30 flex items-center justify-center group-hover:bg-purple-500/30 transition-colors">
+            <svg width="20" height="20" fill="none" stroke="#C084FC" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <p class="text-xs text-gray-500 mb-1">Correo</p>
+            <p class="text-white font-semibold text-sm break-all">cardif.tech@gmail.com</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Trust badges row -->
+      <div class="flex items-center justify-center gap-8 pt-10 border-t border-white/10">
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span class="text-xs text-gray-500">Datos seguros</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="text-xs text-gray-500">Deploy en 7 días</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg width="16" height="16" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16l-.08.92z"/></svg>
+          <span class="text-xs text-gray-500">Soporte incluido</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║            FOOTER            ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <footer class="bg-brand-dark border-t border-white/10 px-6 py-8">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+
+      <!-- Logo -->
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded-md bg-brand-blue flex items-center justify-center">
+          <svg width="13" height="13" viewBox="0 0 18 18" fill="none">
+            <rect x="2"  y="2"  width="6" height="6" rx="1.5" fill="white"/>
+            <rect x="10" y="2"  width="6" height="6" rx="1.5" fill="white" opacity="0.7"/>
+            <rect x="2"  y="10" width="6" height="6" rx="1.5" fill="white" opacity="0.7"/>
+            <rect x="10" y="10" width="6" height="6" rx="1.5" fill="white" opacity="0.4"/>
+          </svg>
+        </div>
+        <span class="text-sm font-bold text-white tracking-tight">C-TECH</span>
+      </div>
+
+      <p class="text-xs text-gray-600 text-center">
+        © 2026 C-TECH. Automatización ágil para negocios que crecen.
+      </p>
+
+      <div class="flex items-center gap-5">
+        <a href="#" class="text-xs text-gray-600 hover:text-gray-400 transition-colors">Privacidad</a>
+        <a href="#" class="text-xs text-gray-600 hover:text-gray-400 transition-colors">Términos</a>
+        <a href="#contacto" class="text-xs text-gray-600 hover:text-gray-400 transition-colors">Contacto</a>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Mobile menu script -->
+  <script>
+    const btn  = document.getElementById('menuBtn');
+    const menu = document.getElementById('mobileMenu');
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+    // Close on link click
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => menu.classList.add('hidden'));
+    });
+  </script>
+
+</body>
+</html>
