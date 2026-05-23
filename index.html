@@ -724,24 +724,326 @@
       </p>
 
       <div class="flex items-center gap-5">
-        <a href="#" class="text-xs text-gray-600 hover:text-gray-400 transition-colors">Privacidad</a>
-        <a href="#" class="text-xs text-gray-600 hover:text-gray-400 transition-colors">Términos</a>
+        <button onclick="openModal('modal-privacidad')"
+                class="text-xs text-gray-600 hover:text-gray-400 transition-colors cursor-pointer bg-transparent border-0 p-0">
+          Privacidad
+        </button>
+        <button onclick="openModal('modal-terminos')"
+                class="text-xs text-gray-600 hover:text-gray-400 transition-colors cursor-pointer bg-transparent border-0 p-0">
+          Términos
+        </button>
         <a href="#contacto" class="text-xs text-gray-600 hover:text-gray-400 transition-colors">Contacto</a>
       </div>
 
     </div>
   </footer>
 
-  <!-- Mobile menu script -->
+
+  <!-- ╔══════════════════════════════════════════╗ -->
+  <!-- ║   MODAL – AVISO DE PRIVACIDAD            ║ -->
+  <!-- ╚══════════════════════════════════════════╝ -->
+  <div id="modal-privacidad"
+       role="dialog" aria-modal="true" aria-labelledby="title-privacidad"
+       class="modal-overlay fixed inset-0 z-[200] flex items-center justify-center px-4 py-8 opacity-0 pointer-events-none"
+       style="background:rgba(17,24,39,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:opacity 0.25s ease;">
+
+    <div class="modal-box bg-white rounded-2xl shadow-2xl w-full max-w-2xl flex flex-col max-h-[88vh]"
+         style="transform:translateY(20px);transition:transform 0.25s ease;">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between px-7 pt-6 pb-4 border-b border-gray-100 flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+            <svg width="16" height="16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h2 id="title-privacidad" class="text-lg font-bold text-gray-900">Aviso de Privacidad</h2>
+        </div>
+        <button onclick="closeModal('modal-privacidad')"
+                class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+                aria-label="Cerrar">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Body scrollable -->
+      <div class="overflow-y-auto px-7 py-6 text-sm text-gray-600 leading-relaxed space-y-5 flex-1">
+
+        <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Última actualización: Mayo 2026</p>
+
+        <p>
+          <strong class="text-gray-800">C-TECH</strong> (en adelante, "el Responsable"), con correo electrónico de contacto
+          <a href="mailto:cardif.tech@gmail.com" class="text-blue-600 hover:underline">cardif.tech@gmail.com</a>,
+          es responsable del tratamiento de sus datos personales conforme a lo establecido en la
+          <strong class="text-gray-800">Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP)</strong>
+          y demás normatividad aplicable en los Estados Unidos Mexicanos.
+        </p>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">1. Datos personales recabados</h3>
+          <p>A través de los formularios de contacto presentes en este sitio web, el Responsable podrá recabar los siguientes datos personales:</p>
+          <ul class="list-disc list-inside mt-2 space-y-1 text-gray-500">
+            <li>Nombre completo</li>
+            <li>Dirección de correo electrónico</li>
+            <li>Número de teléfono o celular</li>
+            <li>Nombre de la empresa o negocio (en su caso)</li>
+          </ul>
+          <p class="mt-2">El Responsable <strong class="text-gray-800">no recaba datos personales sensibles</strong> en ningún momento.</p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">2. Finalidades del tratamiento</h3>
+          <p>Los datos personales recabados serán utilizados <strong class="text-gray-800">única y exclusivamente</strong> para las siguientes finalidades primarias:</p>
+          <ul class="list-disc list-inside mt-2 space-y-1 text-gray-500">
+            <li>Dar seguimiento a su solicitud de información o contacto con C-TECH.</li>
+            <li>Agendar y gestionar reuniones o demostraciones de los productos y servicios de C-TECH.</li>
+            <li>Responder a sus consultas técnicas o comerciales a través de los canales indicados.</li>
+          </ul>
+          <p class="mt-2">
+            Sus datos <strong class="text-gray-800">no serán utilizados para fines publicitarios de terceros</strong>,
+            campañas de marketing masivo, ni serán vendidos, cedidos o transferidos a personas físicas
+            o morales distintas al Responsable, salvo obligación legal expresa.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">3. Confidencialidad y seguridad</h3>
+          <p>
+            El Responsable adopta las medidas técnicas, administrativas y físicas de seguridad necesarias para
+            proteger sus datos personales contra daño, pérdida, alteración, destrucción, uso, acceso o tratamiento
+            no autorizado. La información proporcionada es tratada con estricta confidencialidad y solo el personal
+            autorizado de C-TECH tendrá acceso a ella.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">4. Derechos ARCO</h3>
+          <p>
+            Usted tiene derecho a <strong class="text-gray-800">Acceder, Rectificar, Cancelar u Oponerse</strong> (derechos ARCO)
+            al tratamiento de sus datos personales. Para ejercer cualquiera de estos derechos, puede enviar su solicitud
+            al correo electrónico <a href="mailto:cardif.tech@gmail.com" class="text-blue-600 hover:underline">cardif.tech@gmail.com</a>,
+            indicando su nombre completo, el derecho que desea ejercer y los datos de contacto para notificarle la respuesta.
+            El Responsable atenderá su solicitud en los plazos establecidos por la LFPDPPP.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">5. Cambios al Aviso de Privacidad</h3>
+          <p>
+            El Responsable se reserva el derecho de modificar el presente Aviso de Privacidad en cualquier momento.
+            Cualquier modificación será publicada en este sitio web con la fecha de actualización correspondiente.
+            El uso continuado del sitio implica la aceptación de las modificaciones realizadas.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">6. Autoridad competente</h3>
+          <p>
+            Si considera que su derecho a la protección de datos personales ha sido vulnerado, puede acudir ante el
+            <strong class="text-gray-800">Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI)</strong>,
+            para iniciar el procedimiento de protección de derechos que corresponda.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Footer del modal -->
+      <div class="px-7 py-5 border-t border-gray-100 flex justify-end flex-shrink-0">
+        <button onclick="closeModal('modal-privacidad')"
+                class="btn-primary text-white text-sm font-semibold px-6 py-2.5 rounded-xl">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ╔══════════════════════════════════════════╗ -->
+  <!-- ║   MODAL – TÉRMINOS Y CONDICIONES         ║ -->
+  <!-- ╚══════════════════════════════════════════╝ -->
+  <div id="modal-terminos"
+       role="dialog" aria-modal="true" aria-labelledby="title-terminos"
+       class="modal-overlay fixed inset-0 z-[200] flex items-center justify-center px-4 py-8 opacity-0 pointer-events-none"
+       style="background:rgba(17,24,39,0.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:opacity 0.25s ease;">
+
+    <div class="modal-box bg-white rounded-2xl shadow-2xl w-full max-w-2xl flex flex-col max-h-[88vh]"
+         style="transform:translateY(20px);transition:transform 0.25s ease;">
+
+      <!-- Header -->
+      <div class="flex items-center justify-between px-7 pt-6 pb-4 border-b border-gray-100 flex-shrink-0">
+        <div class="flex items-center gap-3">
+          <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center flex-shrink-0">
+            <svg width="16" height="16" fill="none" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h2 id="title-terminos" class="text-lg font-bold text-gray-900">Términos y Condiciones</h2>
+        </div>
+        <button onclick="closeModal('modal-terminos')"
+                class="w-8 h-8 rounded-lg flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-colors"
+                aria-label="Cerrar">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <!-- Body scrollable -->
+      <div class="overflow-y-auto px-7 py-6 text-sm text-gray-600 leading-relaxed space-y-5 flex-1">
+
+        <p class="text-xs text-gray-400 uppercase tracking-widest font-semibold">Última actualización: Mayo 2026</p>
+
+        <p>
+          Los presentes Términos y Condiciones regulan el acceso y uso del sitio web de
+          <strong class="text-gray-800">C-TECH</strong>, así como la contratación de sus productos y servicios de software.
+          Al acceder a este sitio, usted acepta de forma expresa e irrevocable los presentes términos.
+          Si no está de acuerdo con alguno de ellos, le solicitamos abstenerse de utilizar el sitio.
+        </p>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">1. Propiedad Intelectual</h3>
+          <p>
+            Todo el contenido de este sitio web y de los productos de software de C-TECH, incluyendo sin limitación:
+            código fuente, diseños, interfaces gráficas, logotipos, nombre comercial, bases de datos, textos,
+            fotografías, ilustraciones, gráficos, íconos y cualquier otro elemento, son propiedad exclusiva de
+            <strong class="text-gray-800">C-TECH</strong> o de sus licenciantes y se encuentran protegidos por las leyes
+            mexicanas e internacionales de propiedad intelectual, derechos de autor y marcas registradas.
+          </p>
+          <p class="mt-2">
+            Queda <strong class="text-gray-800">estrictamente prohibido</strong> reproducir, copiar, distribuir,
+            modificar, transformar, transmitir, publicar, sublicenciar, vender o explotar de cualquier forma,
+            total o parcialmente, el contenido de este sitio o los productos de C-TECH sin autorización escrita
+            previa del Responsable.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">2. Licencia de uso del software</h3>
+          <p>
+            C-TECH otorga a sus clientes una <strong class="text-gray-800">licencia de uso limitada, no exclusiva, intransferible y revocable</strong>
+            sobre el software contratado, únicamente para los fines y durante el periodo pactado en el acuerdo
+            de servicio correspondiente. Esta licencia no implica cesión alguna de derechos de propiedad intelectual.
+          </p>
+          <p class="mt-2">
+            El cliente no podrá: (a) descompilar, realizar ingeniería inversa o desensamblar el software;
+            (b) crear obras derivadas; (c) eliminar avisos de derechos de autor o propiedad; ni
+            (d) sublicenciar o ceder el software a terceros.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">3. Marca y nombre comercial</h3>
+          <p>
+            El nombre <strong class="text-gray-800">"C-TECH"</strong>, su logotipo, isotipos, colores corporativos y
+            cualquier signo distintivo asociado son marca comercial y/o nombre comercial de uso exclusivo del Responsable.
+            Su uso sin autorización expresa y por escrito constituye una violación a la
+            <strong class="text-gray-800">Ley de la Propiedad Industrial</strong> y demás disposiciones aplicables.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">4. Uso aceptable del sitio</h3>
+          <p>El usuario se compromete a utilizar este sitio de forma lícita y conforme a la buena fe. Queda prohibido:</p>
+          <ul class="list-disc list-inside mt-2 space-y-1 text-gray-500">
+            <li>Introducir virus, malware o cualquier código malicioso.</li>
+            <li>Intentar acceder sin autorización a sistemas, redes o bases de datos de C-TECH.</li>
+            <li>Usar el sitio para fines fraudulentos, difamatorios o ilegales.</li>
+            <li>Realizar ataques de denegación de servicio o cualquier acción que perturbe su funcionamiento.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">5. Limitación de responsabilidad</h3>
+          <p>
+            C-TECH no será responsable por daños directos, indirectos, incidentales, especiales o consecuentes
+            derivados del uso o imposibilidad de uso de este sitio web o de sus productos, en la medida en que
+            la legislación mexicana aplicable lo permita. La información contenida en este sitio se proporciona
+            "tal cual", sin garantías de ningún tipo.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">6. Modificaciones</h3>
+          <p>
+            C-TECH se reserva el derecho de modificar en cualquier momento y sin previo aviso los presentes
+            Términos y Condiciones. Las modificaciones entrarán en vigor desde su publicación en este sitio web.
+            El uso continuado del sitio tras la publicación de cambios implica la aceptación de los mismos.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">7. Legislación aplicable y jurisdicción</h3>
+          <p>
+            Los presentes Términos y Condiciones se rigen e interpretan de conformidad con las leyes vigentes en
+            los <strong class="text-gray-800">Estados Unidos Mexicanos</strong>. Para cualquier controversia derivada de
+            su interpretación o cumplimiento, las partes se someten a la jurisdicción de los tribunales competentes
+            de la Ciudad de Puebla, Puebla, renunciando expresamente a cualquier otro fuero que pudiera corresponderles.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="font-semibold text-gray-800 mb-2">8. Contacto</h3>
+          <p>
+            Para cualquier consulta relacionada con estos Términos y Condiciones, puede comunicarse con C-TECH a través
+            del correo <a href="mailto:cardif.tech@gmail.com" class="text-blue-600 hover:underline">cardif.tech@gmail.com</a>
+            o mediante los canales de contacto indicados en este sitio.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Footer del modal -->
+      <div class="px-7 py-5 border-t border-gray-100 flex justify-end flex-shrink-0">
+        <button onclick="closeModal('modal-terminos')"
+                class="btn-primary text-white text-sm font-semibold px-6 py-2.5 rounded-xl">
+          Entendido
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
   <script>
+    // ── Mobile menu ──────────────────────────────
     const btn  = document.getElementById('menuBtn');
     const menu = document.getElementById('mobileMenu');
-    btn.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+    btn.addEventListener('click', () => menu.classList.toggle('hidden'));
+    menu.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => menu.classList.add('hidden'))
+    );
+
+    // ── Modales ───────────────────────────────────
+    function openModal(id) {
+      const overlay = document.getElementById(id);
+      const box     = overlay.querySelector('.modal-box');
+      document.body.style.overflow = 'hidden';
+      overlay.classList.remove('pointer-events-none');
+      // Force reflow before transition
+      overlay.getBoundingClientRect();
+      overlay.style.opacity = '1';
+      box.style.transform   = 'translateY(0)';
+    }
+
+    function closeModal(id) {
+      const overlay = document.getElementById(id);
+      const box     = overlay.querySelector('.modal-box');
+      overlay.style.opacity = '0';
+      box.style.transform   = 'translateY(20px)';
+      setTimeout(() => {
+        overlay.classList.add('pointer-events-none');
+        document.body.style.overflow = '';
+      }, 260);
+    }
+
+    // Cerrar al hacer clic fuera del cuadro
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
     });
-    // Close on link click
-    menu.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => menu.classList.add('hidden'));
+
+    // Cerrar con tecla Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay:not(.pointer-events-none)')
+          .forEach(m => closeModal(m.id));
+      }
     });
   </script>
 
